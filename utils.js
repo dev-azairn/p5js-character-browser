@@ -59,7 +59,7 @@ const loadUnitData = async (units, dirname, filename) => {
         } catch (err) {
             console.error("Error loading unit data:", filePath, err);
         }
-    else if (filename.endsWith(".txt"))  
+    else if (filename.endsWith(".txt") || filename.endsWith(".ini"))  
         try {
             const configData = await fs.readFile(filePath, 'utf-8');
             const detail = {};
@@ -70,7 +70,7 @@ const loadUnitData = async (units, dirname, filename) => {
             detail["atk"] = parseFloat(lines[2]);
             detail["def"] = parseFloat(lines[3]);
             detail["description"] = lines[4];
-
+            console.log(lines);
              await Promise.all([
                 loadSprite(path.join(dirname, lines[5]), idle),
                 loadSprite(path.join(dirname, lines[6]), attack),
