@@ -64,7 +64,7 @@ const loadUnitData = async (units, dirname, filename) => {
             const configData = await fs.readFile(filePath, 'utf-8');
             const detail = {};
             const idle = {}, attack = {}, walk = {}, death = {};
-            const lines = configData.split('\r\n');
+            const lines = configData.split(/\r?\n/);
             detail["name"] = lines[0];
             detail["health"] = parseFloat(lines[1]);
             detail["atk"] = parseFloat(lines[2]);
