@@ -29,6 +29,10 @@ function setup() {
   createCanvas(1280, 720);
   frameRate(60);
   
+  document.oncontextmenu = function() {
+  if (mouseX < width && mouseY < height)
+    return false;
+  }
   // Create units and *start* loading assets
   for (let unitConfig of unitsConfigData) {
     let newUnit = new Unit(unitConfig);
